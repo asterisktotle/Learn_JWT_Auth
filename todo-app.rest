@@ -21,3 +21,29 @@ Content-Type: application/json
     "password": "1231312"
     
 }
+
+### Fetch all todos GET /TODOS (protected)
+GET http://localhost:5100/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MTk5MDA0LCJleHAiOjE3MzkyODU0MDR9.-oEGx1GCpdy9d4RAk0W04tyepvYtakaaf4wHPt8FrPk
+
+###Creates a new todos POST /TODOS (protected)
+POST http://localhost:5100/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MTk5MDA0LCJleHAiOjE3MzkyODU0MDR9.-oEGx1GCpdy9d4RAk0W04tyepvYtakaaf4wHPt8FrPk
+Content-Type: application/json
+
+{
+    "task": "learn jwt authentication"
+}
+
+### Update a todo PUT /TODOS/:ID (protected)
+PUT http://localhost:5100/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MTk5MDA0LCJleHAiOjE3MzkyODU0MDR9.-oEGx1GCpdy9d4RAk0W04tyepvYtakaaf4wHPt8FrPk
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### Delete a todo DELETE /TODOS/:ID (protected)
+DELETE http://localhost:5100/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM5MTk5MDA0LCJleHAiOjE3MzkyODU0MDR9.-oEGx1GCpdy9d4RAk0W04tyepvYtakaaf4wHPt8FrPk
