@@ -41,6 +41,35 @@ export const createAccount = (req, res) => {
 	console.log('generated password: ', hashedPassword);
 	res.sendStatus(200);
 };
+
 export const loginAccount = (req, res) => {
-	req.send(json(req.body));
+	const { username, password } = req.body;
+
+	try {
+		//find the  user from the database using SQL command
+		const getUser = db.prepare(`SELECT * FROM users WHERE username = ?`);
+		const user = getUser.get(username);
+
+		//if user is not found
+		if (!user) {
+			return res.status(404).send({ message: 'User not found' });
+		}
+
+		//compare the password from the stored password in the db using bcrypt
+		const passwordIsValid = bcrypt.compareSync(password, user.password);
+
+		//handle invalid password
+		if (!passwordIsValid) {
+			return res.status(401).send({ message: 'Invalid password' });
+		}
+
+		const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+			expiresIn: '24h',
+		});
+		res.json({ token });
+	} catch (err) {
+		console.log(err.message);
+		res.sendStatus(500);
+	}
+	r;
 };
