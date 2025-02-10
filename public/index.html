@@ -217,7 +217,8 @@
 					});
 					data = await response.json();
 				} else {
-					// login an account
+					// login an account however i dont want to send a password directly to req
+					// sending password to the http request is vulnerable
 					const response = await fetch(apiBase + 'auth/login', {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },

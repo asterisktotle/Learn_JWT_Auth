@@ -63,6 +63,7 @@ export const loginAccount = (req, res) => {
 			return res.status(401).send({ message: 'Invalid password' });
 		}
 
+		//in the auth middleware, you will decode the id
 		const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
 			expiresIn: '24h',
 		});
