@@ -1,5 +1,5 @@
 {
-	"name": "nodejs",
+	"name": "nodejs-part-2",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
@@ -10,10 +10,14 @@
 	"author": "",
 	"license": "ISC",
 	"type": "module",
-	"description": "",
+	"description": "dockerized full stack todo that uses NodeJS, PostgreSQL, Prima ORM and, JWT auth",
 	"dependencies": {
+		"@prisma/client": "^6.3.1",
 		"bcryptjs": "^2.4.3",
 		"express": "^4.21.2",
-		"jsonwebtoken": "^9.0.2"
+		"install": "^0.13.0",
+		"jsonwebtoken": "^9.0.2",
+		"pg": "^8.13.1",
+		"prisma": "^6.3.1"
 	}
 }
