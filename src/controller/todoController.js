@@ -1,4 +1,4 @@
-import db from '../db.js';
+// import db from '../db.js';
 import prisma from '../prismaClient.js';
 
 export const getAllTodos = async (req, res) => {
@@ -66,8 +66,7 @@ export const deleteTodo = async (req, res) => {
 	// 	`DELETE FROM todos WHERE id = ? AND user_id = ?`
 	// );
 	// deleteTodos.run(id, userId);
-
-	const deleteTodos = await prisma.todo.delete({
+	await prisma.todo.delete({
 		where: {
 			id: parseInt(id),
 			userId,

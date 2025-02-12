@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from '../db.js';
+// import db from '../db.js';
 import prisma from '../prismaClient.js';
 
 export const createAccount = async (req, res) => {
@@ -53,7 +53,6 @@ export const createAccount = async (req, res) => {
 
 			//method 2 - prisma
 			{ id: user.id },
-
 			process.env.JWT_SECRET,
 			{ expiresIn: '24h' }
 		);
@@ -64,7 +63,6 @@ export const createAccount = async (req, res) => {
 	}
 
 	console.log('generated password: ', hashedPassword);
-	res.sendStatus(200);
 };
 
 export const loginAccount = async (req, res) => {
@@ -102,7 +100,8 @@ export const loginAccount = async (req, res) => {
 		res.json({ token });
 	} catch (err) {
 		console.log(err.message);
-		res.sendStatus(500);
+		// res.status(500).send({'server eerroornejE'})
+		res.sendStatus(501);
 	}
 	r;
 };
